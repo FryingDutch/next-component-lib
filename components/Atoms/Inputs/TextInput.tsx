@@ -7,9 +7,9 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 }
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-    ({...props}, ref) => {
+    ({className, ...props}, ref) => {
     return (
-        <Input ref={ref} type="text" {...props} />
+        <Input ref={ref} type="text" className={cn("", className)} {...props} />
     );
 });
 
