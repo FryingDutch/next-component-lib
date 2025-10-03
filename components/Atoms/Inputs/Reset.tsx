@@ -9,7 +9,7 @@ export type ResetInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const ResetInput = forwardRef<HTMLInputElement, ResetInputProps>(
     ({className, ...props}, ref) => {
     return (
-            <Input ref={ref} type="reset" className={cn("", className)} {...props} />
+            <Input ref={ref} type="reset" className={cn("cursor-pointer", className)} {...props} />
     );
 });
 

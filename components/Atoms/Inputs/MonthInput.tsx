@@ -9,7 +9,7 @@ export type MonthInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const MonthInput = forwardRef<HTMLInputElement, MonthInputProps>(
     ({className, ...props}, ref) => {
     return (
-            <Input ref={ref} type="month" className={cn("", className)} {...props} />
+            <Input ref={ref} type="month" className={cn("cursor-pointer", className)} {...props} />
     );
 });
 

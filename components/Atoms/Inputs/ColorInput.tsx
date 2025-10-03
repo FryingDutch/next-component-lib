@@ -9,7 +9,7 @@ export type ColorInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
     ({className, ...props}, ref) => {
     return (
-            <Input ref={ref} type="color" className={cn("border-none", className)} {...props} />
+            <Input ref={ref} type="color" className={cn("cursor-pointer border-none", className)} {...props} />
     );
 });
 

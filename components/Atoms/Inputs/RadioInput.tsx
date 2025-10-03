@@ -9,7 +9,7 @@ export type RadioInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const RadioInput = forwardRef<HTMLInputElement, RadioInputProps>(
     ({className, ...props}, ref) => {
     return (
-            <Input ref={ref} type="radio" className={cn("max-h-5", className)} {...props} />
+            <Input ref={ref} type="radio" className={cn("cursor-pointer max-h-5", className)} {...props} />
     );
 });
 

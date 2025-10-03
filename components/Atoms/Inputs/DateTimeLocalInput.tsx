@@ -9,7 +9,7 @@ export type DateTimeLocalInputProps = React.InputHTMLAttributes<HTMLInputElement
 const DateTimeLocalInput = forwardRef<HTMLInputElement, DateTimeLocalInputProps>(
     ({className, ...props}, ref) => {
     return (
-            <Input ref={ref} type="datetime-local" className={cn("", className)} {...props} />
+            <Input ref={ref} type="datetime-local" className={cn("cursor-pointer", className)} {...props} />
     );
 });
 

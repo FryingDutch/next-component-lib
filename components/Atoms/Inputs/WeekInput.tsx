@@ -9,7 +9,7 @@ export type WeekInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const WeekInput = forwardRef<HTMLInputElement, WeekInputProps>(
     ({className, ...props}, ref) => {
     return (
-            <Input ref={ref} type="month" className={cn("", className)} {...props} />
+            <Input ref={ref} type="month" className={cn("cursor-pointer", className)} {...props} />
     );
 });
 

@@ -9,7 +9,7 @@ export type RangeInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const RangeInput = forwardRef<HTMLInputElement, RangeInputProps>(
     ({className, ...props}, ref) => {
     return (
-        <Input ref={ref} type="range" className={cn("", className)} {...props} />
+        <Input ref={ref} type="range" className={cn("cursor-pointer", className)} {...props} />
     );
 });
 

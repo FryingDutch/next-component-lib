@@ -9,7 +9,7 @@ export type TimeInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
     ({className, ...props}, ref) => {
     return (
-        <Input ref={ref} type="time" className={cn("", className)} {...props} />
+        <Input ref={ref} type="time" className={cn("cursor-pointer", className)} {...props} />
     );
 });
 

@@ -14,7 +14,7 @@ const RedirectButton = ({
     return (
         <a 
             href={href} 
-            className={cn("inline-flex items-center justify-center bg-primary text-buttont-primary px-2 py-1 whitespace-nowrap", className)}>
+            className={cn("inline-flex items-center justify-center bg-primary text-buttont-primary px-2 py-1 whitespace-nowrap cursor-pointer", className)}>
             {label}
         </a>
     );

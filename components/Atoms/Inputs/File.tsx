@@ -9,7 +9,7 @@ export type FileInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
     ({className, ...props}, ref) => {
     return (
-            <Input ref={ref} type="file" className={cn("", className)} {...props} />
+            <Input ref={ref} type="file" className={cn("cursor-pointer", className)} {...props} />
     );
 });
 

@@ -9,7 +9,7 @@ export type DateInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
     ({className, ...props}, ref) => {
     return (
-            <Input ref={ref} type="date" className={cn("", className)} {...props} />
+            <Input ref={ref} type="date" className={cn("cursor-pointer", className)} {...props} />
     );
 });
 
