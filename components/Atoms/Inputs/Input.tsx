@@ -8,7 +8,7 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const Input = forwardRef<HTMLInputElement, InputProps>(
     ({className, ...props}, ref) => {
     return (
-        <input ref={ref} {...props} className={cn("border-2 border-primary bg-background pl-1 h-10", className)}/>
+        <input ref={ref} {...props} className={cn("border-2 border-primary bg-background pl-1", className)}/>
     );
 });
 

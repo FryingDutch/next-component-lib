@@ -2,15 +2,15 @@ import cn from "@/utils/cn"
 import { forwardRef } from "react";
 import Input from "@/components/Atoms/Inputs/Input";
 
-export type ColorInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type CheckBoxInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   className?: string
 }
 
-const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
+const CheckBoxInput = forwardRef<HTMLInputElement, CheckBoxInputProps>(
     ({className, ...props}, ref) => {
     return (
-            <Input ref={ref} type="checkbox" className={cn("border-none", className)} {...props} />
+            <Input ref={ref} type="checkbox" className={cn("h-4", className)} {...props} />
     );
 });
 
-export default ColorInput;
+export default CheckBoxInput;
