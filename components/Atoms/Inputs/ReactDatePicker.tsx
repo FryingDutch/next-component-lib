@@ -1,10 +1,10 @@
 import cn from "@/utils/cn"
 import "react-datepicker/dist/react-datepicker.css";
-import ReactDatePicker from "react-datepicker";
+import DatePicker from "react-datepicker";
 import { enGB, Locale } from "date-fns/locale";
 import { useState } from "react";
 
-export type DatePickerProps = {
+export type ReactDatePickerProps = {
   className?: string;
   calendarClassName?: string;
   dayClassName?: string;
@@ -25,7 +25,7 @@ export type DatePickerProps = {
 onChange?: (date: Date | null) => void;
 };
 
-const DatePicker = ({
+const ReactDatePicker = ({
   className,
   calendarClassName,
   dayClassName,
@@ -38,11 +38,11 @@ const DatePicker = ({
   todayButtonLabel = "Today",
   onCalendarOpen,
   onCalendarClose,
-}: DatePickerProps) => {
+}: ReactDatePickerProps) => {
     const [singleDate, setSingleDate] = useState<Date | null>(new Date());
     return (
-        <div className={cn("")}>
-            <ReactDatePicker
+        <div className={cn("", className)}>
+            <DatePicker
             selected={singleDate}
             onChange={(date) => setSingleDate(date)}
             timeCaption={timeCaption}
@@ -83,4 +83,4 @@ const DatePicker = ({
     );
 };
 
-export default DatePicker;
+export default ReactDatePicker;

@@ -26,7 +26,6 @@ const Curtain = ({
   children,
 }: CurtainProps) => {
   const [open, setOpen] = useState(false);
-
   return (
     <div id={id} className={cn("flex flex-col", className)}>
       <HeroIconActionButton
