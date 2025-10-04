@@ -28,11 +28,26 @@ import SubmitInput from "@/components/Atoms/Inputs/SubmitInput";
 import HiddenInput from "@/components/Atoms/Inputs/HiddenInput";
 import RedirectButton from "@/components/Atoms/Buttons/RedirectButton";
 import DatePicker from "@/components/Atoms/Inputs/DatePicker";
+import ReactTimePicker from "@/components/Atoms/Inputs/ReactTimeInput"
 
 import { useState } from "react";
+import ParagraphTitle from "@/components/Atoms/Typography/H1";
+import Paragraph from "@/components/Atoms/Typography/Paragraph";
+import H1 from "@/components/Atoms/Typography/H1";
+import H2 from "@/components/Atoms/Typography/H2";
+import H3 from "@/components/Atoms/Typography/H3";
+import H4 from "@/components/Atoms/Typography/H4";
+import H5 from "@/components/Atoms/Typography/H5";
+import H6 from "@/components/Atoms/Typography/H6";
+import BodyLargeText from "@/components/Atoms/Typography/BodyLargeText";
+import BodySmallText from "@/components/Atoms/Typography/BodySmallText";
+import Label from "@/components/Atoms/Typography/Label";
+import Overline from "@/components/Atoms/Typography/Overline";
+import Caption from "@/components/Atoms/Typography/Caption";
 
 export default function Home() {
    const [startDate, setStartDate] = useState<Date | null>(new Date());
+   const [time, setTime] = useState("12:00");
 
   return (
     <main>
@@ -58,11 +73,12 @@ export default function Home() {
           <ResetInput className="" />
           <SubmitInput className="" />
           <HiddenInput className="" />
-          <DatePicker 
-            selected={new Date("2026-11-31")}
+          <DatePicker selected={new Date('04/11/2025')} />
+          <ReactTimePicker
+
           />
       </Curtain>
-      <Curtain id="button-demo" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-5 my-1 gap-2">
+      <Curtain id="native" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-5 my-1 gap-2">
         <RedirectButton
         href={"#"}
         label= "RedirectButton"
@@ -81,6 +97,32 @@ export default function Home() {
         label= "SubmitDataButton"
         onFail={() => alert("SubmitDataButton Clicked: Failed to submit to url")}
         />
+      </Curtain>
+      <Curtain id="native" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-6 my-1 gap-2">
+        <H1 content= "This is a <H1>"/>
+        <H2 content= "This is a <H2>"/>
+        <H3 content= "This is a <H3>"/>
+        <H4 content= "This is a <H4>"/>
+        <H5 content= "This is a <H5>"/>
+        <H6 content= "This is a <H6>"/>
+        <BodyLargeText content= "This is a BodyLargeText: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."/>
+        <BodySmallText content= "This is a BodySmallText: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."/>
+        <Label content= "This is a Label"/>
+        <Overline content= "This is a Overline"/>
+        <Caption content= "This is a Caption"/>
+      </Curtain>
+      <Curtain id="native" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-6 my-1 gap-2">
+        <H1 content= "This is a <H1>"/>
+        <H2 content= "This is a <H2>"/>
+        <H3 content= "This is a <H3>"/>
+        <H4 content= "This is a <H4>"/>
+        <H5 content= "This is a <H5>"/>
+        <H6 content= "This is a <H6>"/>
+        <BodyLargeText content= "This is a BodyLargeText: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."/>
+        <BodySmallText content= "This is a BodySmallText: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."/>
+        <Label content= "This is a Label"/>
+        <Overline content= "This is a Overline"/>
+        <Caption content= "This is a Caption"/>
       </Curtain>
     </main>
   );
