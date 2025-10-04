@@ -15,9 +15,9 @@ const HeroIconActionButton = ({
     icon: HeroIcon,
     className,
     heroIconClassName
-}: HeroIconActionButtonProps) => {
+}: HeroIconActionButtonProps): React.JSX.Element => {
     return (
-        <button onClick={onClick} className={cn("inline-flex items-center justify-center bg-primary text-buttont-primary px-2 py-1 whitespace-nowrap cursor-pointer", className)}>
+        <button onClick={onClick} className={cn("inline-flex items-center justify-center bg-primary text-buttont-primary px-2 py-1 whitespace-nowrap cursor-pointer hover:bg-primary-contrast", className)}>
             <HeroIcon className={cn("h-16 w-16", heroIconClassName)}/>
         </button>
     );
