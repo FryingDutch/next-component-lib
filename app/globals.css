@@ -3,8 +3,8 @@
 :root {
   --background: #e0e0e0;
   --foreground: #171717;
-
   --primary: #b14b4b;
+  --primary-contrast: #af3131;
 }
 
 @theme inline {
@@ -14,6 +14,8 @@
   --font-mono: var(--font-geist-mono);
 
   --color-primary: var(--primary);
+  --color-primary-contrast: var(--primary-contrast);
+  --color-buttont-primary: var(--background)
 }
 
 @media (prefers-color-scheme: dark) {
