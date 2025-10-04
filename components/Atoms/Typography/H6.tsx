@@ -12,7 +12,7 @@ const H6 = ({
     className,
 }: H6Props) => {
     return (
-        <h5 className={cn("inline-flex text-md font-medium", className)}>
+        <h5 className={cn("inline-flex text-md font-medium text-primary", className)}>
             {content}
         </h5>
     );

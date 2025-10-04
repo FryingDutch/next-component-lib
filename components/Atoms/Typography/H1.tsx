@@ -12,7 +12,7 @@ const H1 = ({
     className,
 }: H1Props) => {
     return (
-        <h1 className={cn("inline-flex text-4xl font-bold", className)}>
+        <h1 className={cn("inline-flex text-4xl font-bold text-primary", className)}>
             {content}
         </h1>
     );
