@@ -27,10 +27,15 @@ import ResetInput from "@/components/Atoms/Inputs/Reset";
 import SubmitInput from "@/components/Atoms/Inputs/SubmitInput";
 import HiddenInput from "@/components/Atoms/Inputs/HiddenInput";
 import RedirectButton from "@/components/Atoms/Buttons/RedirectButton";
+import DatePicker from "@/components/Atoms/Inputs/DatePicker";
+
+import { useState } from "react";
 
 export default function Home() {
+   const [startDate, setStartDate] = useState<Date | null>(new Date());
+
   return (
-    <div className="">
+    <main>
       <Curtain id="inputs-demo" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-5 my-1 gap-2">
           <TextInput placeholder="Text input" className="" />
           <EmailInput placeholder="E-mail input" className="" />
@@ -53,6 +58,9 @@ export default function Home() {
           <ResetInput className="" />
           <SubmitInput className="" />
           <HiddenInput className="" />
+          <DatePicker 
+            selected={new Date("2026-11-31")}
+          />
       </Curtain>
       <Curtain id="button-demo" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-5 my-1 gap-2">
         <RedirectButton
@@ -74,6 +82,7 @@ export default function Home() {
         onFail={() => alert("SubmitDataButton Clicked: Failed to submit to url")}
         />
       </Curtain>
-    </div>
+    </main>
   );
 }
+
