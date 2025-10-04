@@ -8,7 +8,7 @@ export type TextAreaInputProps = React.TextareaHTMLAttributes<HTMLTextAreaElemen
 const TextAreaInput = forwardRef<HTMLTextAreaElement, TextAreaInputProps>(
     ({className, ...props}, ref) => {
     return (
-        <textarea ref={ref} {...props} className={cn("border-2 border-primary bg-background pl-1", className)}/>
+        <textarea ref={ref} {...props} className={cn("border-1 border-primary/30 bg-white pl-1", className)}/>
     );
 });
 

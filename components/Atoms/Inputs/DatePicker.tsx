@@ -1,7 +1,7 @@
-import cn from "./../../../utils/cn"
+import cn from "@/utils/cn"
 import "react-datepicker/dist/react-datepicker.css";
 import ReactDatePicker from "react-datepicker";
-import { enUS, Locale } from "date-fns/locale";
+import { enGB, Locale } from "date-fns/locale";
 import { useState } from "react";
 
 export type DatePickerProps = {
@@ -19,6 +19,7 @@ export type DatePickerProps = {
   maxDate?: Date;
   locale?: Locale;
   todayButtonLabel?: string;
+  showPopperArrow?: boolean;
   onCalendarOpen?: () => void;
   onCalendarClose?: () => void;
 onChange?: (date: Date | null) => void;
@@ -29,43 +30,56 @@ const DatePicker = ({
   calendarClassName,
   dayClassName,
   weekendClassName,
-  selected,
-  onChange,
-  showTimeSelect,
-  timeIntervals = 15,
   timeCaption,
   dateFormat = "dd/MM/yyyy",
-  placeholderText = "Select date and time",
   minDate,
   maxDate,
-  locale = enUS,
+  locale = enGB,
   todayButtonLabel = "Today",
   onCalendarOpen,
   onCalendarClose,
 }: DatePickerProps) => {
-     const [singleDate, setSingleDate] = useState<Date | null>(new Date());
-
+    const [singleDate, setSingleDate] = useState<Date | null>(new Date());
     return (
-        <ReactDatePicker
-          selected={singleDate}
-          onChange={(date) => setSingleDate(date)}
-          showTimeSelect={showTimeSelect}
-          timeIntervals={timeIntervals}
-          timeCaption={timeCaption}
-          dateFormat={dateFormat}
-          placeholderText={placeholderText}
-          minDate={minDate}
-          maxDate={maxDate}
-          locale={locale}
-          className={cn("text-center cursor-pointer border-2 border-primary", className)}
-          calendarClassName={cn("bg-black", calendarClassName)}
-          dayClassName={(date) => cn(date.getDay() === 0 || date.getDay() === 6 ? weekendClassName : "", dayClassName)}
-          popperClassName="!bg-black !overflow-hidden !rounded-2xl"
-          todayButton={todayButtonLabel}
-          onCalendarOpen={onCalendarOpen}
-          onCalendarClose={onCalendarClose}
-          wrapperClassName=""
-        />
+        <div className={cn("")}>
+            <ReactDatePicker
+            selected={singleDate}
+            onChange={(date) => setSingleDate(date)}
+            timeCaption={timeCaption}
+            dateFormat={dateFormat}
+            minDate={minDate}
+            maxDate={maxDate}
+            locale={locale}
+            className={cn("text-center cursor-pointer border-1 border-primary bg-white")}
+            calendarClassName={cn("", calendarClassName)}
+            dayClassName={(date) => cn(date.getDay() === 0 || date.getDay() === 6 ? cn("bg-primary/50", weekendClassName) : "", dayClassName)}
+            popperClassName=""
+            todayButton={todayButtonLabel}
+            onCalendarOpen={onCalendarOpen}
+            onCalendarClose={onCalendarClose}
+            wrapperClassName=""
+            showPopperArrow={true}
+            renderCustomHeader={({
+                date,
+                decreaseMonth,
+                increaseMonth,
+                prevMonthButtonDisabled,
+                nextMonthButtonDisabled,
+            }) => (
+            <div className="bg-primary text-white px-2 py-1 flex justify-between items-center">
+                <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+                    {"<"}
+                </button>
+                <span className="capitalize">
+                    {date.toLocaleDateString(undefined, { month: "long", year: "numeric" })}
+                </span>
+                <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+                    {">"}
+                </button>
+            </div>
+            )}
+            />
+        </div>
     );
 };
 
