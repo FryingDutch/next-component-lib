@@ -2,6 +2,10 @@
 import { useState } from "react";
 import { MusicalNoteIcon } from "@heroicons/react/24/outline";
 import { SquaresPlusIcon } from "@heroicons/react/24/outline";
+import { PhoneIcon } from "@heroicons/react/24/outline";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import { CommandLineIcon } from "@heroicons/react/24/outline";
+import { ComputerDesktopIcon } from "@heroicons/react/24/outline";
 
 import Curtain from "@/components/Molecules/Curtains/Curtain";
 
@@ -72,10 +76,7 @@ import LabeledActionButton from "@/components/Molecules/Buttons/LabeledActionBut
 import LabeledSubmitDataButton from "@/components/Molecules/Buttons/LabeledSubmitDataButton";
 import LabeledRedirectButton from "@/components/Molecules/Buttons/LabeledRedirectButton";
 import LabeledHeroIconActionButton from "@/components/Molecules/Buttons/LabeledHeroIconActionButton";
-import AlternativeActionButton from "@/components/Atoms/Buttons/AlternativeActionButton";
-import AlternativeRedirectButton from "@/components/Atoms/Buttons/AlternativeRedirectButton";
-import AlternativeHeroIconActionButton from "@/components/Atoms/Buttons/AlternativeHeroIconActionButton";
-import AlternativeSubmitDataButton from "@/components/Atoms/Buttons/AlternativeSubmitDataButton";
+import HeroIconTextButton from "@/components/Atoms/Buttons/HeroIconTextButton";
 
 export default function Home() {
    const [startDate, setStartDate] = useState<Date | null>(new Date());
@@ -83,7 +84,7 @@ export default function Home() {
 
   return (
     <main>
-      <Curtain id="inputs-demo" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-5 my-1 gap-2">
+      <Curtain id="atoms-inputs" label="Atoms / Inputs" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-5 my-1 gap-2">
           <TextInput placeholder="Text input" className="" />
           <EmailInput placeholder="E-mail input" className="" />
           <PasswordInput placeholder="Password input" className="" />
@@ -108,7 +109,7 @@ export default function Home() {
           <SubmitInput className="" />
           <HiddenInput className="" />
       </Curtain>
-      <Curtain id="native" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-4 my-1 gap-2">
+      <Curtain id="atoms-buttons" label="Atoms / Buttons" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-5 my-1 gap-2">
         <RedirectButton
         href={"#"}
         label= "Redirect Button"
@@ -121,32 +122,47 @@ export default function Home() {
         onClick={() => alert("HeroIconActionButton Clicked")}
         icon={MusicalNoteIcon}
         />
+        <HeroIconTextButton
+        onClick={() => alert("HeroIconTextutton Clicked")}
+        icon={CommandLineIcon}
+        buttonLabel="Hello World"
+        />
         <SubmitDataButton
         url="/test"
         data='{ "hello": "world" }'
         label= "Submit Data Button"
         onFail={() => alert("SubmitDataButton Clicked: Failed to submit to url")}
         />
-        <AlternativeRedirectButton
+        <RedirectButton
         href={"#"}
-        label= "Alternative Redirect Button"
+        label="Alternative Redirect Data Button"
+        altButton={true}
         />
-        <AlternativeActionButton
+        <ActionButton
         onClick={() => alert("Action Button Clicked")}
         label= "Alternative Action Button"
+        altButton={true}
         />
-        <AlternativeHeroIconActionButton
-        onClick={() => alert("HeroIconActionButton Clicked")}
+        <HeroIconActionButton
+        onClick={() => alert("Alternative HeroIconActionButton Clicked")}
         icon={SquaresPlusIcon}
+        altButton={true}
         />
-        <AlternativeSubmitDataButton
+        <HeroIconTextButton
+        onClick={() => alert("HeroIconTextutton Clicked")}
+        icon={ComputerDesktopIcon}
+        buttonLabel="Hello World"
+        altButton={true}
+        />
+        <SubmitDataButton
         url="/test"
         data='{ "hello": "world" }'
-        label= "Submit Alternative Data Button"
-        onFail={() => alert("SubmitDataButton Clicked: Failed to submit to url")}
+        label= "Alternative Submit Data Button"
+        onFail={() => alert("Alternative SubmitDataButton Clicked: Failed to submit to url")}
+        altButton={true}
         />
       </Curtain>
-      <Curtain id="native" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-6 my-1 gap-2">
+      <Curtain id="atoms-typography" label="Atoms / Typography" buttonClassName="justify-end" className="" openClassName="max-h-130" childrenWrapperClassName="grid grid-cols-6 my-1 gap-2">
         <H1 content= "This is a <H1>"/>
         <H2 content= "This is a <H2>"/>
         <H3 content= "This is a <H3>"/>
@@ -159,7 +175,7 @@ export default function Home() {
         <Overline content= "This is a Overline"/>
         <Caption content= "This is a Caption"/>
       </Curtain>
-      <Curtain id="native" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-5 my-1 gap-2">
+      <Curtain id="molecules-inputs" label="Molecules / Inputs" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-5 my-1 gap-2">
         <LabeledTextInput label="Labeled Text Input" />
         <LabeledEmailInput label="Labeled Email Input" />
         <LabeledPasswordInput label="Labeled Password Input" />
@@ -183,11 +199,46 @@ export default function Home() {
         <LabeledReactDatePicker label="Labeled React DatePicker"/>
         <LabeledReactTimePicker label="Labeled React TimePicker"/>
       </Curtain>
-      <Curtain id="native" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-4 my-1 gap-2">
-        <LabeledActionButton label="This is a Labeled Action Button" buttonLabel="Labeled Action Button"/>
-        <LabeledSubmitDataButton label="This is a Labeled Submit Data Button" buttonLabel="Labeled Submit Data Button"/>
-        <LabeledHeroIconActionButton label="This is a Labeled Redirect Button" icon={MusicalNoteIcon}/>
-        <LabeledRedirectButton label="This is a Labeled Redirect Button" buttonLabel="Labeled Redirect Button"/>
+      <Curtain id="molecules-buttons" label="Molecules / Buttons" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-4 my-1 gap-2">
+        <LabeledRedirectButton href="#" label="This is a Labeled Redirect Button" buttonLabel="Labeled Redirect Button"/>
+        <LabeledActionButton 
+        onClick={() => alert("Labeled Action Button Clicked")}
+        label="This is a Labeled Action Button" 
+        buttonLabel="Labeled Action Button"
+        />
+        <LabeledHeroIconActionButton 
+        onClick={() => alert("Labeled HeroIcon Action Button Clicked")}
+        label="This is a HeroIcon Action Button" 
+        icon={PhoneIcon}
+        />
+        <LabeledSubmitDataButton 
+        label="This is a Labeled Submit Data Button" 
+        buttonLabel="Labeled Submit Data Button"
+        url="/test"
+        data='{ "hello": "world" }'
+        onFail={() => alert("SubmitDataButton Clicked: Failed to submit to url")}
+        />
+        <LabeledRedirectButton href="#" label="This is a Alternative Labeled Redirect Button" buttonLabel="Alternative Labeled Redirect Button" altButton={true}/>
+        <LabeledActionButton 
+        onClick={() => alert("Alternative Labeled Action Button Clicked")}
+        label="This is a Labeled Action Button" 
+        buttonLabel="Labeled Action Button"
+        altButton={true}
+        />
+        <LabeledHeroIconActionButton 
+        onClick={() => alert("Alternative Labeled HeroIcon Action Button Clicked")}
+        label="This is a Alternative HeroIcon Action Button" 
+        icon={EnvelopeIcon}
+        altButton={true}
+        />
+        <LabeledSubmitDataButton 
+        label="This is a Alternative Labeled Submit Data Button" 
+        buttonLabel="Alternative Labeled Submit Data Button"
+        url="/test"
+        data='{ "hello": "world" }'
+        onFail={() => alert("Alternative SubmitDataButton Clicked: Failed to submit to url")}
+        altButton={true}
+        />
       </Curtain>
     </main>
   );
