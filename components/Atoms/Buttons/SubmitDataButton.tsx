@@ -12,9 +12,10 @@ export type SubmitDataButtonProps = {
     onSucces?: (...args: any[]) => any,
     onFail?: (...args: any[]) => any,
     className?: string
+    altButton?: boolean;
 }
 
-const SubmitDataButton = ({url, data, label, className, method, contentType, onSucces, onFail}: SubmitDataButtonProps): React.JSX.Element => {
+const SubmitDataButton = ({url, data, label, className, method, contentType, altButton, onSucces, onFail}: SubmitDataButtonProps): React.JSX.Element => {
     const submitData = async () => {
         const res = await fetch(url, {
             method: method ?? "POST",
@@ -35,6 +36,7 @@ const SubmitDataButton = ({url, data, label, className, method, contentType, onS
             onClick={submitData}
             label={label}
             className={cn("", className)}
+            altButton={altButton ?? false}
         />
     );
 }

@@ -8,12 +8,13 @@ export type LabeledHeroIconActionButtonProps = React.InputHTMLAttributes<HTMLInp
   label: string;
   icon: HeroIcon;
   className?: string;
+  altButton?: boolean
 }
 
 const LabeledHeroIconActionButton = forwardRef<HTMLInputElement, LabeledHeroIconActionButtonProps>(
-    ({label, className, ...props}, ref) => {
+    ({label, className, altButton = false, ...props}, ref) => {
     return (
-        <LabeledButton button={HeroIconActionButton} {...props} label={label} />
+        <LabeledButton button={HeroIconActionButton} {...props} label={label} altButton={altButton} className={cn("", className)}/>
     );
 });
 
