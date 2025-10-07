@@ -1,5 +1,5 @@
 import cn from "@/utils/cn"
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import Input from "@/components/Atoms/Inputs/Input";
 
 export type CheckBoxInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
@@ -7,9 +7,9 @@ export type CheckBoxInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 }
 
 const CheckBoxInput = forwardRef<HTMLInputElement, CheckBoxInputProps>(
-    ({className, ...props}, ref) => {
+    ({className, ...props}, ref): React.JSX.Element => {
     return (
-            <Input ref={ref} type="checkbox" className={cn("h-4", className)} {...props} />
+            <Input {...props} ref={ref} className={cn("h-4", className)} type="checkbox" />
     );
 });
 

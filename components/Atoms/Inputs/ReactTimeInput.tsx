@@ -1,5 +1,6 @@
 import cn from '@/utils/cn';
 import TimePicker from "react-accessible-time-picker";
+import React from "react";
 
 export type ReactTimeInputProps = {
     className?: string;

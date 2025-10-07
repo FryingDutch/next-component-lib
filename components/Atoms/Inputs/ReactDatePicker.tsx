@@ -1,8 +1,8 @@
 import cn from "@/utils/cn"
 import "react-datepicker/dist/react-datepicker.css";
-import DatePicker from "react-datepicker";
-import { enGB, Locale } from "date-fns/locale";
-import { useState } from "react";
+import DatePicker, {ReactDatePickerCustomHeaderProps} from "react-datepicker";
+import {enGB, Locale} from "date-fns/locale";
+import React, { useState } from "react";
 
 export type ReactDatePickerProps = {
   className?: string;
@@ -59,25 +59,30 @@ const ReactDatePicker = ({
             onCalendarClose={onCalendarClose}
             wrapperClassName=""
             showPopperArrow={true}
-            renderCustomHeader={({
-                date,
-                decreaseMonth,
-                increaseMonth,
-                prevMonthButtonDisabled,
-                nextMonthButtonDisabled,
-            }) => (
-            <div className="bg-primary text-white px-2 py-1 flex justify-between items-center">
-                <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
-                    {"<"}
-                </button>
-                <span className="capitalize">
-                    {date.toLocaleDateString(undefined, { month: "long", year: "numeric" })}
-                </span>
-                <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
-                    {">"}
-                </button>
-            </div>
-            )}
+            showMonthYearDropdown={true}
+            renderCustomHeader={(props: ReactDatePickerCustomHeaderProps): React.ReactElement => {
+                const {
+                    date,
+                    decreaseMonth,
+                    increaseMonth,
+                    prevMonthButtonDisabled,
+                    nextMonthButtonDisabled,
+                } = props;
+
+                return (
+                    <div className="bg-primary text-white px-2 py-1 flex justify-between items-center">
+                        <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+                            {"<"}
+                        </button>
+                        <span className="capitalize">
+                            {date.toLocaleDateString(undefined, { month: "long", year: "numeric" })}
+                        </span>
+                        <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+                            {">"}
+                        </button>
+                    </div>
+                );
+            }}
             />
         </div>
     );

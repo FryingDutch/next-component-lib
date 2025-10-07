@@ -1,5 +1,5 @@
 import cn from "@/utils/cn"
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import Input from "@/components/Atoms/Inputs/Input";
 
 export type DateInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
