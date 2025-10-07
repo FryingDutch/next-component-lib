@@ -1,4 +1,4 @@
-import { forwardRef, ComponentType, InputHTMLAttributes, RefAttributes } from "react";
+import React, { forwardRef, ComponentType, InputHTMLAttributes, RefAttributes } from "react";
 import Label from "@/components/Atoms/Typography/Label";
 import cn from "@/utils/cn";
 
@@ -10,7 +10,7 @@ export type LabeledInputProps<P extends {}> = InputHTMLAttributes<HTMLInputEleme
   inputClassName?: string;
 };
 
-const LabeledInput = <P extends {}>(
+const LabeledInput = <P extends {className?: string}>(
   { input: Input, className, label, labelClassName, inputClassName, ...props }: LabeledInputProps<P>,
   ref: React.Ref<HTMLInputElement>
 ) => (

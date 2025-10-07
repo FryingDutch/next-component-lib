@@ -1,20 +1,25 @@
 import cn from "@/utils/cn"
-import { forwardRef } from "react";
+import React from "react";
 import LabeledInput from "./LabeledInput";
-import RangeInput from "@/components/Atoms/Inputs/RangeInput";
 import ResetInput from "@/components/Atoms/Inputs/Reset";
 
-export type LabeledResetInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  label: string;
-  className?: string;
-  labelClassName?: string;
-}
+export type LabeledResetInputProps = {
+    label: string;
+    className?: string;
+    labelClassName?: string;
+    inputClassName?: string;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "className">;
 
-const LabeledResetInput = forwardRef<HTMLInputElement, LabeledResetInputProps>(
-    ({className, labelClassName, ...props}, ref) => {
+const LabeledResetInput = ({className, labelClassName, inputClassName, ...props}: LabeledResetInputProps) => {
     return (
-        <LabeledInput input={ResetInput} ref={ref} className={cn("", className)} labelClassName={cn("", labelClassName)}{...props} />
+        <LabeledInput
+            input={ResetInput}
+            className={className}
+            labelClassName={labelClassName}
+            inputClassName={inputClassName}
+            {...props}
+        />
     );
-});
+};
 
 export default LabeledResetInput;

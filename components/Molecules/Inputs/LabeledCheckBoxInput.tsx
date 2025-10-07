@@ -1,5 +1,5 @@
 import cn from "@/utils/cn"
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import LabeledInput from "./LabeledInput";
 import CheckBoxInput from "@/components/Atoms/Inputs/CheckBoxInput";
 
@@ -12,7 +12,7 @@ export type LabeledCheckBoxInputProps = React.InputHTMLAttributes<HTMLInputEleme
 const LabeledCheckBoxInput = forwardRef<HTMLInputElement, LabeledCheckBoxInputProps>(
     ({className, labelClassName, ...props}, ref) => {
     return (
-        <LabeledInput input={CheckBoxInput} ref={ref} type="checkbox" className={cn("", className)} inputClassName="" labelClassName={cn("", labelClassName)}{...props} />
+        <LabeledInput input={CheckBoxInput} ref={ref} className={cn("", className)} inputClassName="" labelClassName={cn("", labelClassName)}{...props} />
     );
 });
 

@@ -1,5 +1,5 @@
 import cn from "@/utils/cn"
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import LabeledInput from "./LabeledInput";
 import TextInput from "@/components/Atoms/Inputs/TextInput";
 import TextAreaInput from "@/components/Atoms/Inputs/TextAreaInput";
