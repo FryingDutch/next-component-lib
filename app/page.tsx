@@ -77,6 +77,7 @@ import LabeledSubmitDataButton from "@/components/Molecules/Buttons/LabeledSubmi
 import LabeledRedirectButton from "@/components/Molecules/Buttons/LabeledRedirectButton";
 import LabeledHeroIconActionButton from "@/components/Molecules/Buttons/LabeledHeroIconActionButton";
 import HeroIconTextButton from "@/components/Atoms/Buttons/HeroIconTextButton";
+import LabeledHeroIconTextButton from "@/components/Molecules/Buttons/LabeledHeroIconTextButton";
 
 export default function Home() {
    const [startDate, setStartDate] = useState<Date | null>(new Date());
@@ -123,15 +124,15 @@ export default function Home() {
         icon={MusicalNoteIcon}
         />
         <HeroIconTextButton
-        onClick={() => alert("HeroIconTextutton Clicked")}
+        onClick={() => alert("HeroIconTextButton Clicked")}
         icon={CommandLineIcon}
-        buttonLabel="Hello World"
+        label="HeroIcon Text Button"
         />
         <SubmitDataButton
-        url="/test"
-        data='{ "hello": "world" }'
+        url="https://nextenv-lib-api.ddev.site/test/submit-data-button"
+        data='{ "label": "atom/submit-button/fail" }'
         label= "Submit Data Button"
-        onFail={() => alert("SubmitDataButton Clicked: Failed to submit to url")}
+        onFail={(error) => alert(JSON.stringify(error))}
         />
         <RedirectButton
         href={"#"}
@@ -151,7 +152,7 @@ export default function Home() {
         <HeroIconTextButton
         onClick={() => alert("HeroIconTextutton Clicked")}
         icon={ComputerDesktopIcon}
-        buttonLabel="Hello World"
+        label="Alt HeroIcon Text Button"
         altButton={true}
         />
         <SubmitDataButton
@@ -199,7 +200,7 @@ export default function Home() {
         <LabeledReactDatePicker label="Labeled React DatePicker"/>
         <LabeledReactTimePicker label="Labeled React TimePicker"/>
       </Curtain>
-      <Curtain id="molecules-buttons" label="Molecules / Buttons" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-4 my-1 gap-2">
+      <Curtain id="molecules-buttons" label="Molecules / Buttons" buttonClassName="justify-end" className="" childrenWrapperClassName="grid grid-cols-5 my-1 gap-2">
         <LabeledRedirectButton href="#" label="This is a Labeled Redirect Button" buttonLabel="Labeled Redirect Button"/>
         <LabeledActionButton 
         onClick={() => alert("Labeled Action Button Clicked")}
@@ -210,6 +211,12 @@ export default function Home() {
         onClick={() => alert("Labeled HeroIcon Action Button Clicked")}
         label="This is a HeroIcon Action Button" 
         icon={PhoneIcon}
+        />
+        <LabeledHeroIconTextButton
+        onClick={() => alert("Alternative Labeled HeroIcon Action Button Clicked")}
+        label="This is a Alternative HeroIcon Action Button"
+        buttonLabel="Alt Icon Text Button"
+        icon={EnvelopeIcon}
         />
         <LabeledSubmitDataButton 
         label="This is a Labeled Submit Data Button" 
@@ -228,6 +235,13 @@ export default function Home() {
         <LabeledHeroIconActionButton 
         onClick={() => alert("Alternative Labeled HeroIcon Action Button Clicked")}
         label="This is a Alternative HeroIcon Action Button" 
+        icon={EnvelopeIcon}
+        altButton={true}
+        />
+        <LabeledHeroIconTextButton
+        onClick={() => alert("Alternative Labeled HeroIcon Action Button Clicked")}
+        label="This is a Alternative HeroIcon Action Button"
+        buttonLabel="Alt Icon Text Button"
         icon={EnvelopeIcon}
         altButton={true}
         />
