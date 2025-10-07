@@ -1,21 +1,20 @@
-"use client"; 
+"use client";
+
+import React, {forwardRef} from "react";
 
 import cn from '@/utils/cn';
+import {BodyTextProps} from "@/types/typography";
 
-export type BodySmallTextProps = {
-    content: string,
-    className?: string,
-}
 
-const BodySmallText = ({
-    content,
-    className,
-}: BodySmallTextProps) => {
+const BodySmallText = forwardRef<HTMLDivElement, BodyTextProps>(
+    (props, ref) => {
+        const {content, className, ...restProps} = props;
     return (
-        <div className={cn("inline-flex text-sm font-normal", className)}>
+        <div {...restProps} ref={ref} className={cn("inline-flex text-sm font-normal", className)}>
             {content}
         </div>
     );
 }
+)
 
 export default BodySmallText;

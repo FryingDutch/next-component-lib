@@ -1,21 +1,21 @@
-"use client"; 
+"use client";
+
+import React, {forwardRef} from "react";
 
 import cn from '@/utils/cn';
+import {AtomTypography} from "@/types/typography";
 
-export type CaptionProps = {
-    content: string,
-    className?: string,
-}
+export type CaptionProps = React.HTMLAttributes<HTMLSpanElement> & AtomTypography;
 
-const Caption = ({
-    content,
-    className,
-}: CaptionProps) => {
+const Caption = forwardRef<HTMLSpanElement, CaptionProps>(
+    (props, ref) => {
+
+    const {content, className, ...restProps} = props;
     return (
-        <span className={cn("inline-flex text-xs font-normal", className)}>
+        <span {...restProps} ref={ref} className={cn("inline-flex text-xs font-normal", className)}>
             {content}
         </span>
-    );
-}
+    );}
+)
 
 export default Caption;

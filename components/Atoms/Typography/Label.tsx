@@ -1,21 +1,17 @@
 "use client"; 
 
 import cn from '@/utils/cn';
+import {AtomTypography} from "@/types/typography";
+import React, {forwardRef} from "react";
 
-export type LabelProps = {
-    content: string,
-    className?: string,
-}
+export type LabelProps = React.HTMLAttributes<HTMLLabelElement> & AtomTypography;
 
-const Label = ({
-    content,
-    className,
-}: LabelProps) => {
+const Label = forwardRef<HTMLLabelElement, LabelProps>((props, ref) => {
+    const {content, className, ...restProps} = props;
     return (
-        <label className={cn("inline-flex text-sm font-medium", className)}>
+        <label {...restProps} ref={ref} className={cn("inline-flex text-sm font-medium", className)}>
             {content}
         </label>
-    );
-}
-
+    );}
+)
 export default Label;

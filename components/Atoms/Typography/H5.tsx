@@ -1,21 +1,16 @@
-"use client"; 
+"use client";
 
 import cn from '@/utils/cn';
+import {HeadingProps} from "@/types/typography";
+import React, {forwardRef} from "react";
 
-export type H5Props = {
-    content: string,
-    className?: string,
-}
-
-const H5 = ({
-    content,
-    className,
-}: H5Props) => {
+const H5 = forwardRef<HTMLHeadingElement, HeadingProps>((props, ref) => {
+    const {content, className, ...restProps} = props;
     return (
-        <h5 className={cn("inline-flex text-lg font-medium text-primary", className)}>
+        <h5 {...restProps} ref={ref} className={cn("inline-flex text-3xl semi-bold text-primary", className)}>
             {content}
         </h5>
-    );
-}
+    );}
+);
 
 export default H5;

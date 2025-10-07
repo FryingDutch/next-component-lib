@@ -1,21 +1,17 @@
-"use client"; 
+"use client";
+import React, {forwardRef} from "react";
 
 import cn from '@/utils/cn';
+import {HeadingProps} from "@/types/typography";
 
-export type H1Props = {
-    content: string,
-    className?: string,
-}
-
-const H1 = ({
-    content,
-    className,
-}: H1Props) => {
+const H1 = forwardRef<HTMLHeadingElement, HeadingProps>((props, ref) => {
+    const {content, className, ...restProps} = props;
     return (
-        <h1 className={cn("inline-flex text-4xl font-bold text-primary", className)}>
+        <h1 {...restProps} ref={ref} className={cn("inline-flex text-4xl font-bold text-primary", className)}>
             {content}
         </h1>
     );
 }
+);
 
 export default H1;

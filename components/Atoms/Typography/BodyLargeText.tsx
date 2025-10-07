@@ -1,21 +1,18 @@
-"use client"; 
+"use client";
+
+import React, {forwardRef} from "react";
 
 import cn from '@/utils/cn';
+import {BodyTextProps} from "@/types/typography";
 
-export type BodyLargeTextProps = {
-    content: string,
-    className?: string,
-}
-
-const BodyLargeText = ({
-    content,
-    className,
-}: BodyLargeTextProps) => {
+const BodyLargeText = forwardRef<HTMLDivElement, BodyTextProps>(
+    (props, ref) => {
+    const {content, className, ...restProps} = props
     return (
-        <div className={cn("inline-flex text-base font-normal", className)}>
+        <div {...restProps} ref={ref} className={cn("inline-flex text-base font-normal", className)}>
             {content}
         </div>
-    );
-}
+    );}
+);
 
 export default BodyLargeText;
