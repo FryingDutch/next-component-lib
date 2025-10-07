@@ -1,6 +1,5 @@
-import cn from "@/utils/cn"
-import { forwardRef } from "react";
-import LabeledButton from "./LabeledButton";
+import React from "react";
+import LabeledButtons from "./LabeledButtons";
 import SubmitDataButton from "@/components/Atoms/Buttons/SubmitDataButton";
 
 export type LabeledSubmitDataButtonProps = {
@@ -12,15 +11,16 @@ export type LabeledSubmitDataButtonProps = {
   labelClassName?: string;
   method?: string,
   contentType?: string,
-  onSucces?: (...args: any[]) => any,
+  onSuccess?: (...args: any[]) => any,
   onFail?: (...args: any[]) => any,
   altButton?: boolean
 }
 
-const LabeledSubmitDataButton = (
-    ({label, buttonLabel, altButton, ...props}: LabeledSubmitDataButtonProps): React.JSX.Element => {
+const LabeledSubmitDataButton = (({url, data, label, buttonLabel, className, labelClassName, method, contentType, onSuccess, onFail, altButton}: LabeledSubmitDataButtonProps): React.JSX.Element => {
     return (
-        <LabeledButton button={SubmitDataButton} buttonLabel={buttonLabel} label={label} altButton={altButton} {...props} />
+        <LabeledButtons label={label} className={className} labelClassName={labelClassName}>
+            <SubmitDataButton url={url} data={data} label={buttonLabel} altButton={altButton} method={method} contentType={contentType} onSuccess={onSuccess} onFail={onFail}/>
+        </LabeledButtons>
     );
 });
 

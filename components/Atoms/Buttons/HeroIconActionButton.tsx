@@ -1,28 +1,27 @@
-"use client"; 
+"use client";
 
 import cn from '@/utils/cn';
-import { HeroIcon } from '@/types/icons';
+import { HeroIconProps } from '@/types/icons';
+import React, {forwardRef} from "react";
+import {ActionButtonProps} from "@/components/Atoms/Buttons/ActionButton";
 
-export type HeroIconActionButtonProps = {
-    onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void | Promise<void> | void,
-    icon: HeroIcon,
-    className?: string,
-    heroIconClassName?: string,
-    altButton?: boolean
+export type HeroIconActionButtonProps = ActionButtonProps & {
+    icon: React.ComponentType<HeroIconProps>,
+    heroIconClassName?: string
 }
 
-const HeroIconActionButton = ({
-    onClick,
-    icon: HeroIcon,
-    className,
-    heroIconClassName,
-    altButton = false
-}: HeroIconActionButtonProps): React.JSX.Element => {
+const HeroIconActionButton = forwardRef<HTMLButtonElement, HeroIconActionButtonProps>((props, ref): React.JSX.Element => {
+    const {onClick, icon: HeroIcon, className, heroIconClassName, altButton = false, ...restProps} = props;
     return (
-        <button onClick={onClick} className={cn("inline-flex items-center justify-center bg-primary text-buttont-primary px-2 py-1 whitespace-nowrap cursor-pointer hover:bg-primary-contrast", (altButton == false) ? "" : "bg-background border-4 border-primary text-primary hover:bg-primary hover:text-background transition-colors duration-300 ease-in-out button", className)}>
+        <button
+                {...restProps}
+                ref={ref}
+                onClick={onClick}
+                className={cn("inline-flex items-center justify-center bg-primary text-buttont-primary px-2 py-1 whitespace-nowrap cursor-pointer hover:bg-primary-contrast", (altButton == false) ? "" : "bg-background border-4 border-primary text-primary hover:bg-primary hover:text-background transition-colors duration-300 ease-in-out button", className)}
+        >
             <HeroIcon className={cn("h-16 w-16", heroIconClassName)}/>
         </button>
-    );
-}
+    );}
+);
 
 export default HeroIconActionButton;

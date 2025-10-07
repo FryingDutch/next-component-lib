@@ -1,20 +1,22 @@
-import cn from "@/utils/cn"
-import { forwardRef } from "react";
-import LabeledButton from "./LabeledButton";
+import LabeledButton, {LabeledButtonProps} from "./LabeledButtons";
 import ActionButton from "@/components/Atoms/Buttons/ActionButton";
+import React from "react";
 
-export type LabeledActionButtonProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type LabeledActionButtonProps = Omit<LabeledButtonProps, "ButtonComponent"> & {
   label: string;
-  buttonLabel: string;
   className?: string;
   labelClassName?: string;
-  altButton?: boolean
 }
 
-const LabeledActionButton = forwardRef<HTMLInputElement, LabeledActionButtonProps>(
-    ({label, buttonLabel, className, labelClassName, altButton = false, ...props}, ref) => {
+const LabeledActionButton = (({label, className, labelClassName, buttonProps}: LabeledActionButtonProps) => {
     return (
-        <LabeledButton button={ActionButton} buttonLabel={buttonLabel} label={label} altButton={altButton} {...props}/>
+        <LabeledButton
+            ButtonComponent={ActionButton}
+            buttonProps={buttonProps}
+            className={className}
+            labelClassName={labelClassName}
+            label={label}
+        />
     );
 });
 

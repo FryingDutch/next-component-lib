@@ -1,30 +1,18 @@
 import cn from '@/utils/cn';
-import { useId } from 'react';
-import H4 from '../Typography/H4';
+import React, {forwardRef} from 'react';
+import {BaseButtonProps} from "@/types/buttons";
 
-export type RedirectButtonProps = {
-    href: string;
-    label: string;
-    className?: string;
-    altButton?: boolean;
+export type RedirectButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & BaseButtonProps & {
+    label: string,
 }
 
-const RedirectButton = ({
-    href,
-    label,
-    className,
-    altButton = false
-}: RedirectButtonProps): React.JSX.Element => {
-    const id = 'button_' + useId();
+const RedirectButton = forwardRef<HTMLAnchorElement, RedirectButtonProps>((props, ref) => {
+    const {label, className, altButton = false} = props;
     return (
-        <a  
-            id={id}
-            href={href} 
-            className={cn("inline-flex items-center justify-center bg-primary px-2 py-1 whitespace-nowrap cursor-pointer hover:bg-primary-contrast", (altButton == false) ? "" : "hover:text-buttont-primary bg-background border-4 border-primary hover:bg-primary transition-colors duration-300 ease-in-out button", className)}
-        >
-            <H4 content={label} className={cn("", (altButton == false) ? "text-buttont-primary" : "text-primary")}/>
+        <a {...props} ref={ref} className={cn("inline-flex items-center justify-center bg-primary px-2 py-1 whitespace-nowrap cursor-pointer hover:bg-primary-contrast", !altButton ? "text-buttont-primary" : "text-primary hover:text-buttont-primary bg-background border-4 border-primary hover:bg-primary transition-colors duration-300 ease-in-out button", className)}>
+            {label}
         </a>
-    );
-}
+    );}
+)
 
 export default RedirectButton;

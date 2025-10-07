@@ -1,20 +1,22 @@
 import cn from "@/utils/cn"
-import { forwardRef } from "react";
-import LabeledButton from "./LabeledButton";
+import React, { forwardRef } from "react";
+import LabeledButtons from "./LabeledButtons";
 import HeroIconActionButton from "@/components/Atoms/Buttons/HeroIconActionButton";
 import { HeroIcon } from "@/types/icons";
 
-export type LabeledHeroIconActionButtonProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type LabeledHeroIconActionButtonProps = {
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void | Promise<void> | void;
   label: string;
   icon: HeroIcon;
   className?: string;
-  altButton?: boolean
+  altButton?: boolean;
 }
 
-const LabeledHeroIconActionButton = forwardRef<HTMLInputElement, LabeledHeroIconActionButtonProps>(
-    ({label, className, altButton = false, ...props}, ref) => {
+const LabeledHeroIconActionButton = (({onClick, icon, label, className, altButton = false}: LabeledHeroIconActionButtonProps) => {
     return (
-        <LabeledButton button={HeroIconActionButton} {...props} label={label} altButton={altButton} className={cn("", className)}/>
+        <LabeledButtons label={label} className={cn("", className)}>
+            <HeroIconActionButton onClick={onClick} icon={icon} altButton={altButton} />
+        </LabeledButtons>
     );
 });
 

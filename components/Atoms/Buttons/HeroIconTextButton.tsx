@@ -1,42 +1,34 @@
-"use client"; 
+"use client";
 
+import React from "react";
 import cn from '@/utils/cn';
-import { HeroIcon } from '@/types/icons';
-import { BodyLargeTextProps } from '../Typography/BodyLargeText';
-import H4 from '../Typography/H4';
-import HeroIconActionButton from './HeroIconActionButton';
+import HeroIconActionButton, {HeroIconActionButtonProps} from '@/components/Atoms/Buttons/HeroIconActionButton';
+import ButtonLargeText from "@/components/Atoms/Typography/ButtonLargeText";
+import {AtomTypography} from "@/types/typography";
 
-export type HeroIconTextButtonProps = {
-    onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void | Promise<void> | void,
-    icon: HeroIcon,
-    className?: string,
-    heroIconClassName?: string,
-    altButton?: boolean,
-    buttonLabel: string
-}
+export type HeroIconTextButtonProps = HeroIconActionButtonProps & AtomTypography;
 
 const HeroIconTextButton = ({
     onClick,
     icon: HeroIcon,
     className,
     heroIconClassName,
-    buttonLabel,
-    altButton = false,
-    ...props
+    label,
+    altButton = false
 }: HeroIconTextButtonProps): React.JSX.Element => {
     return (
-        <div className='relative z-20'>
-            <H4 content={buttonLabel} className={cn("absolute", (altButton == false) ? "text-buttont-primary" : "text-primary hover:text-buttont-primary")}/>
-            <HeroIconActionButton
-                className='w-full h-full'
-                onClick={onClick}
-                icon={HeroIcon}
-                heroIconClassName={heroIconClassName}
-                altButton={altButton}
-                {...props}
+        <HeroIconActionButton
+            className={cn('relative w-full h-full justify-start', (altButton === false) ? "text-buttont-primary" : "text-primary hover:text-buttont-primary", className)}
+            onClick={onClick}
+            icon={HeroIcon}
+            heroIconClassName={cn("", heroIconClassName)}
+            altButton={altButton}
+            label={label}>
+            <ButtonLargeText content={label}
+                className={cn("absolute h-full w-full justify-center items-center text-inherit")}
             />
-        </div>
-        );
+        </HeroIconActionButton>
+    ) as React.JSX.Element;
 }
 
 export default HeroIconTextButton;

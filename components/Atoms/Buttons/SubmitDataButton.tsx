@@ -1,21 +1,20 @@
 "use client"
 
 import cn from '@/utils/cn'
-import ActionButton from './ActionButton';
+import ActionButton, {ActionButtonProps} from './ActionButton';
+import React, {forwardRef} from "react";
 
-export type SubmitDataButtonProps = {
-    url: string,
-    data: string,
-    label: string,
-    method?: string,
-    contentType?: string,
-    onSucces?: (...args: any[]) => any,
-    onFail?: (...args: any[]) => any,
-    className?: string
-    altButton?: boolean;
-}
+export type SubmitDataButtonProps = ActionButtonProps & {
+    url: string;
+    data: string;
+    method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+    contentType?: string;
+    onSuccess?: (...args: any[]) => any;
+    onFail?: (...args: any[]) => any;
+};
 
-const SubmitDataButton = ({url, data, label, className, method, contentType, altButton, onSucces, onFail}: SubmitDataButtonProps): React.JSX.Element => {
+const SubmitDataButton = forwardRef<HTMLButtonElement, SubmitDataButtonProps>((props, ref): React.JSX.Element => {
+    const {url, data, method, contentType, onSuccess, onFail, ...restProps} = props;
     const submitData = async () => {
         const res = await fetch(url, {
             method: method ?? "POST",
@@ -24,21 +23,22 @@ const SubmitDataButton = ({url, data, label, className, method, contentType, alt
         });
 
         if (res.ok) {
-            onSucces?.()
+            const result = await res.json().catch(() => null)
+            onSuccess?.(result, res)
             return;
-        };
+        }
     
-        onFail?.()
+        const error = await res.json().catch(() => null)
+        onFail?.(error, res)
     }
 
     return (
         <ActionButton
+            {...restProps}
+            ref={ref}
             onClick={submitData}
-            label={label}
-            className={cn("", className)}
-            altButton={altButton ?? false}
         />
-    );
-}
+    );}
+);
 
 export default SubmitDataButton;
