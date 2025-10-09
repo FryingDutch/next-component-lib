@@ -1,15 +1,15 @@
 import cn from "@/utils/cn"
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import Input from "@/components/Atoms/Inputs/Input";
 
 export type ColorInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   className?: string
 }
 
-const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
-    ({className, ...props}, ref) => {
+const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, ref): React.JSX.Element => {
+    const {className, ...restProps} = props;
     return (
-            <Input ref={ref} type="color" className={cn("cursor-pointer border-none bg-transparent", className)} {...props} />
+            <Input type="color" {...restProps} ref={ref} className={cn("cursor-pointer border-none bg-transparent")} />
     );
 });
 

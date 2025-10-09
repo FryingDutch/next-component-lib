@@ -1,22 +1,24 @@
 import cn from "@/utils/cn"
 import React from "react";
-import LabeledButtons from "./LabeledButtons";
-import RedirectButton from "@/components/Atoms/Buttons/RedirectButton";
+import LabeledButton from "./LabeledButtons";
+import RedirectButton, {RedirectButtonProps} from "@/components/Atoms/Buttons/RedirectButton";
 
-export type LabeledRedirectButtonProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  href: string,
+export type LabeledRedirectButtonProps = {
   label: string;
-  buttonLabel: string;
   className?: string;
   labelClassName?: string;
-  altButton?: boolean
+  buttonProps: RedirectButtonProps;
 }
 
-const LabeledRedirectButton = (({href, label, buttonLabel, className, labelClassName, altButton}: LabeledRedirectButtonProps): React.JSX.Element => {
+const LabeledRedirectButton = (({label, className, labelClassName, buttonProps}: LabeledRedirectButtonProps): React.JSX.Element => {
     return (
-        <LabeledButtons label={label} labelClassName={cn("", labelClassName)} className={cn("", className)}>
-            <RedirectButton href={href} label={buttonLabel} altButton={altButton} />
-        </LabeledButtons>
+    <LabeledButton
+        ButtonComponent={RedirectButton as React.ComponentType<RedirectButtonProps>}
+        buttonProps={buttonProps}
+        className={className}
+        labelClassName={labelClassName}
+        label={label}
+    />
     );
 });
 

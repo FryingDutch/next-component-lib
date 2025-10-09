@@ -6,10 +6,10 @@ export type DateInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   className?: string
 }
 
-const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
-    ({className, ...props}, ref) => {
+const DateInput = forwardRef<HTMLInputElement, DateInputProps>((props, ref): React.JSX.Element => {
+    const {className, ...restProps} = props;
     return (
-            <Input ref={ref} type="date" className={cn("cursor-pointer", className)} {...props} />
+            <Input {...restProps} ref={ref} type="date" className={cn("cursor-pointer", className)} />
     );
 });
 

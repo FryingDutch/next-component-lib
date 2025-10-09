@@ -7,9 +7,10 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-    ({id, className, ...props}, ref): React.JSX.Element => {
+    (props, ref) => {
+    const {id, className, ...restProps} = props;
     return (
-        <input {...props} id={id} ref={ref} className={cn("border-1 border-primary/30 bg-white pl-1 h-8", className)}/>
+        <input {...restProps} id={id} ref={ref} className={cn("border-1 border-primary/30 bg-white pl-1 h-8", className)}/>
     );
 });
 

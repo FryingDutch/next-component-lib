@@ -7,9 +7,10 @@ export type CheckBoxInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 }
 
 const CheckBoxInput = forwardRef<HTMLInputElement, CheckBoxInputProps>(
-    ({className, ...props}, ref): React.JSX.Element => {
+    (props, ref): React.JSX.Element => {
+    const {className, ...restProps} = props;
     return (
-            <Input {...props} ref={ref} className={cn("h-4", className)} type="checkbox" />
+            <Input {...restProps} ref={ref} className={cn("h-4", className)} type="checkbox" />
     );
 });
 
